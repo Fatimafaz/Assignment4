@@ -6,18 +6,18 @@
 int array[1000];
 
 int sum=0;
+int start=0;
 
 for (int i=0 ; i<1000; i++)
-
 {
 	array[i]=1;
 }
 
 
-int sumfunc(void* startpt)
+int sumfunc(void)
 {
-	int starting=  startpt;
-	int ending=starpt+99;
+	int starting=  start;
+	int ending= start+99;
 	for(int i=starting; i<ending; i++)
 	
 	{
@@ -30,7 +30,7 @@ int sumfunc(void* startpt)
 
 
 int totsum=0;
-int start=0;
+
 
 
 pthread_t thread
@@ -41,7 +41,7 @@ void main()
 	
 	for(int i=0;i<10;i++)
 	{
-	pthread_create(&thread,NULL,sumfunc,void* start);
+			pthread_create(&thread,NULL,sumfunc,NULL);
 	start=start+100;
 	
 	pthread_join(&thread,int sum1);
@@ -56,5 +56,4 @@ void main()
 
 
 }
-	
 	
